@@ -1,0 +1,31 @@
+<div class="container mt-5">
+  <h1 class="text-center mb-3">Lost Pets</h1>
+  <%= link_to "Add a Lost Pet", pets_new_path, class: "btn btn-success mb-3" %>
+  <div class="row">
+    <% @pets.each do |pet| %>
+      <div class="col-md-3">
+        <%= link_to pet_path(pet), class: "text-decoration-none", style: "color: black;" do %>
+          <div class="card", style="width 18rem;">
+            <% if pet.species == "dog" %>
+              <%= image_tag "dog.jpg", alt: "dog" %>
+            <% elsif  pet.species == "cat" %>
+              <%= image_tag "cat.jpg", alt: "cat" %>
+            <% elsif  pet.species == "dragon" %>
+              <%= image_tag "dragon.jpg", alt: "dragon" %>
+            <% elsif  pet.species == "dog" %>
+              <%= image_tag "rabbit.jpg", alt: "rabbit" %>
+            <% elsif  pet.species == "rabbit" %>
+              <%= image_tag "snake.jpg", alt: "snake" %>
+            <% else %>
+              <%= image_tag "turtle.jpg", alt: "turtle" %>
+            <% end %>
+            <div class="card-body">
+              <h5 class="card-title"><%= pet.name %></h5>
+              <p class="card-text"><%= pet.found_days_ago %></p>
+            </div>
+          </div>
+        <% end %>
+      </div>
+    <% end %>
+  </div>
+</div>

@@ -1,0 +1,34 @@
+<div class="container mt-5">
+  <div class="card mb-3 mx-auto" style="max-width: 540px">
+    <div class="row g-0">
+      <div class="col-lg-4">
+        <% if @pet.species == "dog" %>
+              <%= image_tag "dog.jpg", alt: "dog", class: "pet-img" %>
+            <% elsif  @pet.species == "cat" %>
+              <%= image_tag "cat.jpg", alt: "cat", class: "pet-img" %>
+            <% elsif  @pet.species == "dragon" %>
+              <%= image_tag "dragon.jpg", alt: "dragon", class: "pet-img" %>
+            <% elsif  @pet.species == "dog" %>
+              <%= image_tag "rabbit.jpg", alt: "rabbit", class: "pet-img" %>
+            <% elsif  @pet.species == "rabbit" %>
+              <%= image_tag "snake.jpg", alt: "snake", class: "pet-img" %>
+            <% else %>
+              <%= image_tag "turtle.jpg", alt: "turtle", class: "pet-img" %>
+            <% end %>
+      </div>
+      <div class="col-lg-8">
+        <div class="card-body">
+          <h1 class="card-title mb-2"><%= @pet.name %></h1>
+          <h3 class="card-title mb-3"><%= @pet.species %></h3>
+          <p class="card-text">📍 <%= @pet.address %></p>
+          <p class="card-text">Found on: <%= @pet.found_days_ago %></p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="text-center">
+    <%= link_to "Edit", edit_pet_path, class: "btn btn-success" %>
+    <%= link_to "Delete #{@pet.name}", delete_pet_path, data: { turbo_method: :delete, turbo_confirm: "Are you sure you want to remove #{@pet.name}?"}, class: "btn btn-danger" %>
+    <%= link_to "Go Back", pets_path, class: "btn btn-secondary" %>
+  </div>
+</div>
